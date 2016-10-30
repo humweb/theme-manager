@@ -1,6 +1,6 @@
 <?php namespace Humweb\ThemeManager;
 
-use Humweb\Modules\Settings\SettingsSchema;
+use Humweb\Settings\SettingsSchema;
 
 class ThemeSettingsSchema extends SettingsSchema {
 
