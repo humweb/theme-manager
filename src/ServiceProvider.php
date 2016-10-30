@@ -26,8 +26,8 @@ class ServiceProvider extends ModuleBaseProvider
         $oldPaths = $this->app['view.finder']->getPaths();
         $oldHints = $this->app['view.finder']->getHints();
 
-        //        $this->app['settings.schema.manager']->register('themes');
-        //        dd($this->app['settings.schema.manager']->get('themes'));
+        // Register Settings
+        $this->app['settings.schema.manager']->register('themes', ThemeSettingsSchema::class);
 
         // Override core view finder
         $this->app->bind('view.finder', function ($app) use ($oldPaths, $oldHints) {
