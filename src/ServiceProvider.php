@@ -74,7 +74,6 @@ class ServiceProvider extends ModuleBaseProvider
     public function register()
     {
         $this->publishConfig();
-
     }
 
 
