@@ -9,6 +9,9 @@ class Facade extends IlluminateFacade
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'theme'; }
+    protected static function getFacadeAccessor()
+    {
+        return 'theme';
+    }
 
 }

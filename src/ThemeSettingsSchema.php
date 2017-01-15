@@ -2,7 +2,8 @@
 
 use Humweb\Settings\SettingsSchema;
 
-class ThemeSettingsSchema extends SettingsSchema {
+class ThemeSettingsSchema extends SettingsSchema
+{
 
     function __construct($values = [], $decorator = null)
     {
@@ -11,10 +12,10 @@ class ThemeSettingsSchema extends SettingsSchema {
 
         $this->settings = [
             'theme.current' => [
-                'type' => 'select',
-                'label' => 'Theme',
+                'type'        => 'select',
+                'label'       => 'Theme',
                 'description' => 'Select theme for site',
-                'options' => [
+                'options'     => [
                     'default' => 'Default'
                 ],
             ]

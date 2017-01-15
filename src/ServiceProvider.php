@@ -16,6 +16,7 @@ class ServiceProvider extends ModuleBaseProvider
         'website' => '',
     ];
 
+
     public function getAdminMenu()
     {
         return [
@@ -41,7 +42,6 @@ class ServiceProvider extends ModuleBaseProvider
 
         // Register Settings
         $this->app['settings.schema.manager']->register('themes', ThemeSettingsSchema::class);
-
     }
 
 
@@ -52,7 +52,6 @@ class ServiceProvider extends ModuleBaseProvider
             return new Theme($app['config']['theme-manager'], $app['view']);
         });
     }
-
 
 
     /**
