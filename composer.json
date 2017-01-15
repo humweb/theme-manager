@@ -24,6 +24,9 @@
   "require-dev": {
   },
   "autoload": {
+    "files": [
+      "src/helpers.php"
+    ],
     "psr-4": {
       "Humweb\\ThemeManager\\": "src/"
     }
