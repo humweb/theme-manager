@@ -66,7 +66,7 @@ class AbstractTheme {
 
     public function __construct()
     {
-        $this->assets = App::make('theme.assets');
+//        $this->assets = App::make('theme.assets');
     }
     /**
      * Get theme config
