@@ -3,7 +3,6 @@
 use Humweb\ThemeManager\Exceptions\ThemeClassNotFound;
 use Humweb\ThemeManager\Exceptions\ThemeDirectoryNotFound;
 use Illuminate\Contracts\View\Factory;
-use Illuminate\View\ViewFinderInterface;
 
 class Theme
 {
@@ -20,7 +19,7 @@ class Theme
     public function __construct($config = [], Factory $view)
     {
         $this->config = $config;
-        $this->view = $view;
+        $this->view   = $view;
         $this->load($this->config['active']);
 
         $this->prependThemeLocations();
@@ -62,6 +61,12 @@ class Theme
     }
 
 
+    public function getActiveDir($file = '')
+    {
+        return rtrim($this->activeThemePath(), '/').'/'.$file;
+    }
+
+
     /**
      * Get the full path to the active theme
      *
@@ -70,12 +75,6 @@ class Theme
     public function activeThemePath($path = '')
     {
         return $this->baseThemesPath(rtrim($this->active, '/').'/'.trim($path, '/'));
-    }
-
-
-    public function getActiveDir($file = '')
-    {
-        return rtrim($this->activeThemePath(), '/').'/'.$file;
     }
 
 
@@ -104,6 +103,12 @@ class Theme
     protected function prependThemeLocations()
     {
         $this->view->getFinder()->prependLocation($this->activeThemePath('views'));
+    }
+
+
+    public function getUrlPath($path = '')
+    {
+        return str_replace(public_path(), '', $this->activeThemePath('assets/'.$path));
     }
 
 }

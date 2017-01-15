@@ -11,11 +11,12 @@
   "description": "The Laravel Framework.",
   "keywords": [
   ],
-
   "repositories": [
-    {"type": "vcs", "url": "https://github.com/humweb/modules"}
+    {
+      "type": "vcs",
+      "url": "https://github.com/humweb/modules"
+    }
   ],
-
   "require": {
     "php": ">=5.6.4",
     "laravel/framework": "5.3.*",
