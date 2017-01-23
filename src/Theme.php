@@ -30,12 +30,14 @@ class Theme
     {
         //Set activ theme
         $this->setActive($name);
-        //Validate theme
-        $this->validateTheme();
 
-        //Load serviceprovider
-        $this->spawnThemeClass();
-        //run autoloads
+        if ($this->active) {
+            //Validate theme
+            $this->validateTheme();
+
+            //Load serviceprovider
+            $this->spawnThemeClass();
+        }
     }
 
 

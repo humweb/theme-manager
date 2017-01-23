@@ -7,6 +7,8 @@ use Humweb\Modules\ModuleBaseProvider;
 class ServiceProvider extends ModuleBaseProvider
 {
 
+    protected $defer = true;
+
     protected $moduleMeta = [
         'name'    => '',
         'slug'    => 'theme-manager',
@@ -47,7 +49,9 @@ class ServiceProvider extends ModuleBaseProvider
 
     public function register()
     {
+
         $this->publishConfig();
+
         $this->app->singleton('theme', function ($app) {
             return new Theme($app['config']['theme-manager'], $app['view']);
         });
@@ -61,6 +65,6 @@ class ServiceProvider extends ModuleBaseProvider
      */
     public function provides()
     {
-        return array();
+        return ['theme'];
     }
 }
