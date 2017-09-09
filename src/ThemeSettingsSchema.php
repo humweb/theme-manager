@@ -15,9 +15,7 @@ class ThemeSettingsSchema extends SettingsSchema
                 'type'        => 'select',
                 'label'       => 'Theme',
                 'description' => 'Select theme for site',
-                'options'     => [
-                    'default' => 'Default'
-                ],
+                'options'     => Facade::getAvailable(),
             ]
         ];
     }
