@@ -36,7 +36,7 @@ class Theme
             $this->validateTheme();
 
             //Load serviceprovider
-            $this->spawnThemeClass();
+            $this->createThemeClass();
         }
     }
 
@@ -86,7 +86,7 @@ class Theme
     }
 
 
-    protected function spawnThemeClass()
+    protected function createThemeClass()
     {
         require_once $this->activeThemePath('Theme.php');
 
