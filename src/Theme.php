@@ -4,8 +4,6 @@ use Humweb\ThemeManager\Exceptions\ThemeClassNotFound;
 use Humweb\ThemeManager\Exceptions\ThemeDirectoryNotFound;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
-use Symfony\Component\Finder\Finder;
 
 class Theme
 {
@@ -128,7 +126,7 @@ class Theme
 
         return collect(File::directories($this->basePath()))->mapWithKeys(function ($path) {
             return [
-                basename($path) => Str::title(basename($path))
+                basename($path) => title_case(basename($path))
             ];
         });
     }
