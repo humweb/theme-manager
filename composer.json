@@ -37,6 +37,16 @@
   "config": {
     "preferred-install": "dist"
   },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    },
+    "laravel": {
+      "providers": [
+        "Humweb\\ThemeManager\\ServiceProvider"
+      ]
+    }
+  },
   "minimum-stability": "dev",
   "prefer-stable": true
 }

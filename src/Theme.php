@@ -117,7 +117,7 @@ class Theme
 
     public function getUrlPath($path = '')
     {
-        return str_replace(public_path(), '', $this->activeThemePath('assets/'.$path));
+        return str_replace(public_path(), '', $this->activeThemePath($path));
     }
 
 

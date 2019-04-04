@@ -7,29 +7,15 @@ use Humweb\Modules\ModuleBaseProvider;
 class ServiceProvider extends ModuleBaseProvider
 {
 
-    protected $defer = true;
-
     protected $moduleMeta = [
-        'name'    => '',
-        'slug'    => 'theme-manager',
-        'version' => '',
+        'name'    => 'Theme Manager',
+        'slug'    => 'theme',
+        'version' => '1.0',
         'author'  => '',
         'email'   => '',
         'website' => '',
     ];
 
-
-    public function getAdminMenu()
-    {
-        return [
-            'Settings' => [
-                [
-                    'label' => 'Theme',
-                    'url'   => route('get.admin.settings.form', ['theme']),
-                ]
-            ]
-        ];
-    }
 
 
     /**
@@ -38,12 +24,9 @@ class ServiceProvider extends ModuleBaseProvider
     public function boot()
     {
 
-        //Bind theme manager
-        //        $oldPaths = $this->app['view.finder']->getPaths();
-        //        $oldHints = $this->app['view.finder']->getHints();
-
-        // Register Settings
-        $this->app['settings.schema.manager']->register('themes', ThemeSettingsSchema::class);
+        $this->app['modules']->put('theme', $this);
+        $this->app['settings.schema.manager']->register('theme', ThemeSettingsSchema::class);
+//        $this->app['theme']->load();
     }
 
 
@@ -51,10 +34,24 @@ class ServiceProvider extends ModuleBaseProvider
     {
 
         $this->publishConfig();
-
         $this->app->singleton('theme', function ($app) {
+            $app['config']->set('theme-manager.active', $app['settings']->getVal('theme.current'));
             return new Theme($app['config']['theme-manager'], $app['view']);
         });
+
+    }
+
+
+    public function getAdminMenu()
+    {
+        return [
+            'Settings' => [
+                [
+                    'label' => 'Theme',
+                    'url'   => route('get.admin.settings.module', ['theme']),
+                ]
+            ]
+        ];
     }
 
 
